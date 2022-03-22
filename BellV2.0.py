@@ -50,10 +50,10 @@ def bombBell(): #As long as the bomb bell button is pressed, this function will 
 while RunSystem=="True":
     file = open(r'/home/pi/Desktop/BellTimes.txt', 'r+') #For a new time to be added into the file, it will take the program 1 second for every different time in the file, so if you have 13 different times that the bell goes off in the file, it will take a max of 13 seconds for a new time to be loaded into the program.
     timeArray = file.readlines() #Reads the file and puts it as one value into a variable
-    timeArray = [g.strip() for g in timeArray] #strips the array of any new lines and puts it into an array
+    timeArray = [g.strip() for g in timeArray] #strips the array of any new lines and puts each value into an array ["time and name"]
     file.close() #closes the file to save memory leakage
     for line in timeArray: #for every time in the file
-        timeArray = line.split(" ") #split the value so it's "time" and "name"
+        timeArray = line.split(" ") #split the value into a 2D array so the values become ["time" and "name"]
         if (GPIO.input(7)): #if the bomb bell is pressed
             bombBell()
         elif strftime("%H:%M") in timeArray[0]: #if the current system time matches the first value in the current iteration of timeArray
