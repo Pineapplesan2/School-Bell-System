@@ -6,4 +6,4 @@ This project contains the original 2018 version created by Connor Millington, Ce
 
 In the new version, the BellTimes.txt can be edited in the format it's currently in to add in additional times. However with the way the code is written. It is **STRONGLY** inadvisable to have over 30 different entries in this file.
 
-The recommended restart time on the program is once a month, after which, efficiency may start to noticeably reduce and lag to the system the program is running on may gradually increase.
+The recommended restart time on the program is once a month, after which, if not restarted, efficiency may start to noticeably reduce and lag to the system the program is running on may gradually increase.
