@@ -1,12 +1,14 @@
-08:43
-08:45
-09:00
-10:40
-10:57
-11:00
-11:50
-12:40
-13:10
-13:15
-14:10
-15:00
+08:43 Morning
+08:45 Registration
+09:00 Period1
+09:50 Period2
+10:40 Break
+10:57 EndOfBreak
+11:00 Period3
+11:50 Period4
+12:40 Lunch
+13:10 EndofLunch
+13:15 Period5
+14:10 Period6
+15:00 Hometime
+20:57 Test
