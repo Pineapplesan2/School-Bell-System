@@ -54,7 +54,7 @@ while RunSystem=="True":
     file.close() #closes the file to save memory leakage
     for line in timeArray: #for every time in the file
         timeArray = line.split(" ") #split the value into a 2D array so the values become ["time" and "name"]
-        if (GPIO.input(7)): #if the bomb bell is pressed
+        if (GPIO.input(7)): #if the bomb bell button is pressed
             bombBell()
         elif strftime("%H:%M") in timeArray[0]: #if the current system time matches the first value in the current iteration of timeArray
             print("Bell rang at",strftime("%H:%M:%S"),"for",timeArray[-1]) #user friendly output with bell ring and the name of the bell that rang
