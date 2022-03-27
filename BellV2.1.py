@@ -1,9 +1,10 @@
-#KEVI Bell System Version 2.0, Created 22/03/2022 by Cameron Mattocks. Creative inspiration for project drawn from KEVI Bell System Version 1.0 by Connor Millington, Cerys Lock and Cameron Mattocks.
+#KEVI Bell System Version 2.1, Created 22/03/2022 by Cameron Mattocks. Creative inspiration for project drawn from KEVI Bell System Version 1.0 by Connor Millington, Cerys Lock and Cameron Mattocks.
 from time import gmtime, strftime
 from datetime import datetime
 import RPi.GPIO as GPIO
-import time
 from tkinter import *
+import time
+
 
 #Sets up the Raspberry Pi for use with the bell system, noting which pins to use for I/O.
 GPIO.setwarnings(False)
