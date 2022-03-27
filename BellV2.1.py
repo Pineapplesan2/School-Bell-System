@@ -49,9 +49,9 @@ def bombBell(): #As long as the bomb bell button is pressed, this function will 
     GPIOSETUP()
 
 def debugWindow():
-    print("Debug mode activated on:",strftime("%d/%m/%Y at %H:%M:%S"))
+    print("Debug menu accessed on:",strftime("%d/%m/%Y at %H:%M:%S"))
     root = Tk()
-    myButton1 = Button(root, text="Manually ring normal bell", command=lambda:normalBell(x)).pack()
+    myButton1 = Button(root, text="Manually ring normal bell", command=lambda:normalBell(x)).pack() #lambda needs to be in there so it passes the variable into the function correctly
     myButton2 = Button(root, text="Manually ring bomb bell", command=bombBell).pack()
     myButton3 = Button(root, text="Manually Setup GPIO", command=GPIOSETUP).pack()
     myButton4 = Button(root, text="Resume program", command=root.destroy).pack()
@@ -66,7 +66,7 @@ while RunSystem==True:
         timeArray = line.split(" ") #split the value into a 2D array so the values become ["time" and "name"]
         if (GPIO.input(7)): #if the bomb bell button is pressed
             bombBell()
-        elif timeArray[0] == "debug" and timeArray[-1] == "debug":
+        elif timeArray[0] == "debug" and timeArray[-1] == "menu":
             debugWindow()
             GPIOSETUP()
         elif strftime("%H:%M") in timeArray[0]: #if the current system time matches the first value in the current iteration of timeArray
