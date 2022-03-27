@@ -49,7 +49,7 @@ def bombBell(): #As long as the bomb bell button is pressed, this function will 
     time.sleep(0.5)
     GPIOSETUP()
 
-def debugWindow():
+def debugWindow(): #Create the debug window
     print("Debug menu accessed on:",strftime("%d/%m/%Y at %H:%M:%S"))
     root = Tk()
     myButton1 = Button(root, text="Manually ring normal bell", command=lambda:normalBell(x)).pack() #lambda needs to be in there so it passes the variable into the function correctly
