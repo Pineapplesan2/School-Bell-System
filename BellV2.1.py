@@ -1,10 +1,9 @@
-#KEVI Bell System Version 2.1, Created 22/03/2022 by Cameron Mattocks. Creative inspiration for project drawn from KEVI Bell System Version 1.0 by Connor Millington, Cerys Lock and Cameron Mattocks.
+#KEVI Bell System Version 2.1, Created 26/03/2022 by Cameron Mattocks. Creative inspiration for project drawn from KEVI Bell System Version 1.0 by Connor Millington, Cerys Lock and Cameron Mattocks.
 from time import gmtime, strftime
 from datetime import datetime
 import RPi.GPIO as GPIO
-from tkinter import *
 import time
-
+from tkinter import *
 
 #Sets up the Raspberry Pi for use with the bell system, noting which pins to use for I/O.
 GPIO.setwarnings(False)
@@ -49,10 +48,12 @@ def bombBell(): #As long as the bomb bell button is pressed, this function will 
     time.sleep(0.5)
     GPIOSETUP()
 
-def debugWindow(): #Create the debug window
+def debugWindow(): #Creates the debug window
     print("Debug menu accessed on:",strftime("%d/%m/%Y at %H:%M:%S"))
     root = Tk()
-    myButton1 = Button(root, text="Manually ring normal bell", command=lambda:normalBell(x)).pack() #lambda needs to be in there so it passes the variable into the function correctly
+    root.configure(bg='#254477') #changes background colour of window (Default KEVI Blue)
+    root.geometry('200x110') #changes size of window
+    myButton1 = Button(root, text="Manually ring normal bell", command=lambda:normalBell(x)).pack()
     myButton2 = Button(root, text="Manually ring bomb bell", command=bombBell).pack()
     myButton3 = Button(root, text="Manually Setup GPIO", command=GPIOSETUP).pack()
     myButton4 = Button(root, text="Resume program", command=root.destroy).pack()
@@ -67,7 +68,7 @@ while RunSystem==True:
         timeArray = line.split(" ") #split the value into a 2D array so the values become ["time" and "name"]
         if (GPIO.input(7)): #if the bomb bell button is pressed
             bombBell()
-        elif timeArray[0] == "debug" and timeArray[-1] == "menu":
+        elif timeArray[0] == "debug" and timeArray[-1] == "menu": #if "debug menu" is found in the bell times file
             debugWindow()
             GPIOSETUP()
         elif strftime("%H:%M") in timeArray[0]: #if the current system time matches the first value in the current iteration of timeArray
