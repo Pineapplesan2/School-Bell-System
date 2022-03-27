@@ -1,4 +1,3 @@
-
 #TODO find port for switch
 #TODO set up 
 import RPi.GPIO as GPIO
