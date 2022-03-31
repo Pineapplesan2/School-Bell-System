@@ -1,9 +1,8 @@
 #KEVI Bell System Version 2.1, Created 26/03/2022 by Cameron Mattocks. Creative inspiration for project drawn from KEVI Bell System Version 1.0 by Connor Millington, Cerys Lock and Cameron Mattocks.
-from time import gmtime, strftime
-from datetime import datetime
+from time import strftime
 import RPi.GPIO as GPIO
-import time
 from tkinter import *
+import time
 
 #Sets up the Raspberry Pi for use with the bell system, noting which pins to use for I/O.
 GPIO.setwarnings(False)
@@ -14,16 +13,14 @@ GPIO.setup(7, GPIO.IN)
 
 RunSystem=True
 x = 0
-Switch=False
-SystemStartTime = strftime("%d/%m/%Y at %H:%M:%S")
-print("Program started on:",SystemStartTime) #Outputs the date and time the program was first started.
+print("Program started on:",strftime("%d/%m/%Y at %H:%M:%S")) #Outputs the date and time the program was first started.
 
 def GPIOSETUP(): 
     GPIO.setmode(GPIO.BOARD)
     GPIO.setup(12, GPIO.OUT) #Sets up the pin going into the bell
     GPIO.setup(7, GPIO.IN) #Sets up the pin for the button awaiting input for the bomb bell
 
-def normalBell(a): #A bell will take no longer than 2 times the amount of seconds there are items in the bell list, so if there are 14 different times the bell goes off, it will take no longer than 28 seconds once a correct time is reached for the bell to ring. This is not to say it WILL take that long, but it is a possibility.
+def normalBell(a): #A bell will take no longer than 2 multiplied by the amount of seconds there are items in the bell list, so if there are 14 different times the bell goes off, it will take no longer than 28 seconds once a correct time is reached for the bell to ring. This is not to say it WILL take that long, but it is a possibility.
     GPIOSETUP()
     while a<3:
         GPIO.output(12, True)
@@ -81,6 +78,5 @@ while RunSystem==True:
             GPIO.setmode(GPIO.BOARD)
             GPIO.setup(7, GPIO.IN)
             time.sleep(1) #The period between each iteration of the times list. Default=1 (second) to help with RAM and CPU usage, however it means that you are capped at a maximum of 30 different bell times in the file, otherwise you risk bells being skipped completely as it may take up to double the amount of time to execute as there are times in the list.
-
 
 GPIO.cleanup()
