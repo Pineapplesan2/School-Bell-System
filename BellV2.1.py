@@ -50,7 +50,7 @@ def debugWindow(): #Creates the debug window
     root = Tk()
     root.configure(bg='#254477') #changes background colour of window (Default KEVI Blue)
     root.geometry('200x110') #changes size of window
-    myButton1 = Button(root, text="Manually ring normal bell", command=lambda:normalBell(x)).pack()
+    myButton1 = Button(root, text="Manually ring normal bell", command=lambda:normalBell(x)).pack() #lambda required in order to pass variable
     myButton2 = Button(root, text="Manually ring bomb bell", command=bombBell).pack()
     myButton3 = Button(root, text="Manually Setup GPIO", command=GPIOSETUP).pack()
     myButton4 = Button(root, text="Resume program", command=root.destroy).pack()
@@ -71,7 +71,7 @@ while RunSystem==True:
         elif strftime("%H:%M") in timeArray[0]: #if the current system time matches the first value in the current iteration of timeArray
             print("Bell rang at",strftime("%H:%M:%S"),"for",timeArray[-1]) #user friendly output with bell ring and the name of the bell that rang
             normalBell(x)
-            time.sleep(60) #1 minute cooldown so the bell doesn't ring multiple times in the same instance.
+            time.sleep(51) #Cooldown for the remainder of the minute so the bell doesn't ring multiple times in the same instance. (Bell takes 10 seconds to ring, plus an extra second just to be safe.)
             GPIOSETUP()
         else:
             GPIO.cleanup()
