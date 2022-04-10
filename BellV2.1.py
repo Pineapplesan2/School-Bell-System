@@ -38,7 +38,7 @@ def normalBell(a): #A bell will take no longer than 2 multiplied by the amount o
 def bombBell(): #As long as the bomb bell button is pressed, this function will continue endlessly.
     GPIOSETUP()
     GPIO.output(12, True)
-    print("Bomb bell ringing at",strftime("%H:%M:%S"))
+    print("Bomb bell ringing on",strftime("%d/%m/%Y at %H:%M:%S"))
     time.sleep(0.5)
     GPIO.cleanup()
     print("OFF")
@@ -50,10 +50,10 @@ def debugWindow(): #Creates the debug window
     root = Tk()
     root.configure(bg='#254477') #changes background colour of window (Default KEVI Blue)
     root.geometry('200x110') #changes size of window
-    myButton1 = Button(root, text="Manually ring normal bell", command=lambda:normalBell(x)).pack() #lambda required in order to pass variable
-    myButton2 = Button(root, text="Manually ring bomb bell", command=bombBell).pack()
+    myButton1 = Button(root, text="Manually Ring Normal Bell", command=lambda:normalBell(x)).pack() #lambda required in order to pass variable
+    myButton2 = Button(root, text="Manually Ring Bomb Bell", command=bombBell).pack()
     myButton3 = Button(root, text="Manually Setup GPIO", command=GPIOSETUP).pack()
-    myButton4 = Button(root, text="Resume program", command=root.destroy).pack()
+    myButton4 = Button(root, text="Resume Program", command=root.destroy).pack()
     root.mainloop()
     
 while RunSystem==True:
@@ -69,7 +69,7 @@ while RunSystem==True:
             debugWindow()
             GPIOSETUP()
         elif strftime("%H:%M") in timeArray[0]: #if the current system time matches the first value in the current iteration of timeArray
-            print("Bell rang at",strftime("%H:%M:%S"),"for",timeArray[-1]) #user friendly output with bell ring and the name of the bell that rang
+            print("Bell rang on",strftime("%d/%m/%Y at %H:%M:%S"),"for",timeArray[-1]) #user friendly output with bell ring and the name of the bell that rang
             normalBell(x)
             time.sleep(51) #Cooldown for the remainder of the minute so the bell doesn't ring multiple times in the same instance. (Bell takes 10 seconds to ring, plus an extra second just to be safe.)
             GPIOSETUP()
