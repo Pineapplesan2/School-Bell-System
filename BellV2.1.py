@@ -69,7 +69,7 @@ while RunSystem==True:
             debugWindow()
             GPIOSETUP()
         elif strftime("%H:%M") in timeArray[0]: #if the current system time matches the first value in the current iteration of timeArray
-            print("Bell rang on",strftime("%d/%m/%Y at %H:%M:%S"),"for",timeArray[-1]) #user friendly output with bell ring and the name of the bell that rang
+            print("Normal Bell rang on",strftime("%d/%m/%Y at %H:%M:%S"),"for",timeArray[-1]) #user friendly output with bell ring and the name of the bell that rang
             normalBell(x)
             time.sleep(51) #Cooldown for the remainder of the minute so the bell doesn't ring multiple times in the same instance. (Bell takes 10 seconds to ring, plus an extra second just to be safe.)
             GPIOSETUP()
