@@ -57,7 +57,7 @@ def debugWindow(): #Creates the debug window
     root.mainloop()
     
 while RunSystem==True:
-    file = open(r'/home/pi/Desktop/BellTimes.txt', 'r+') #For a new time to be added into the file, it will take the program 1 second for every different time in the file, so if you have 13 different times that the bell goes off in the file, it will take a max of 13 seconds for a new time to be loaded into the program.
+    file = open(r'BellTimes.txt', 'r+') #For a new time to be added into the file, it will take the program 1 second for every different time in the file, so if you have 13 different times that the bell goes off in the file, it will take a max of 13 seconds for a new time to be loaded into the program.
     timeArray = file.readlines() #Reads the file and puts it as one value into a variable
     timeArray = [g.strip() for g in timeArray] #strips the array of any new lines and puts each value into an array ["time and name"]
     file.close() #closes the file to save memory leakage
